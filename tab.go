@@ -147,7 +147,7 @@ func (tab *DataTab) handleKeyEvent(event termbox.Event, output chan<- interface{
 		} else {
 			return EXIT_SCREEN_INDEX
 		}
-	} else if event.Key == termbox.KeyEsc {
+	} else if event.Key == termbox.KeyCtrlG {
 		if tab.is_searching {
 			tab.search_quit_channel <- true
 		}
