@@ -53,8 +53,8 @@ func (screen *DialogScreen) performLayout() {
 }
 
 func (screen *DialogScreen) drawScreen(style Style) {
-	fg := style.default_fg
-	bg := style.default_bg
+	fg := style.Default_fg
+	bg := style.Default_bg
 
 	drawStringAtPoint(screen.caption, screen.left+2, screen.top+1, fg, bg)
 	for i, s := range strings.Split(screen.text, "\n") {

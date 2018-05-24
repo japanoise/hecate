@@ -25,8 +25,8 @@ func (widget NavigationWidget) sizeForLayout(layout Layout) Size {
 }
 
 func (widget NavigationWidget) drawAtPoint(tab *DataTab, layout Layout, point Point, style Style) Size {
-	fg := style.default_fg
-	bg := style.default_bg
+	fg := style.Default_fg
+	bg := style.Default_bg
 	x_pos := point.x
 	if layout.pressure == 0 {
 		x_pos += drawStringAtPoint(navStrLong, x_pos, point.y, fg, bg)

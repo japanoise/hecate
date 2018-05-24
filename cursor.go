@@ -135,15 +135,15 @@ func (cursor *Cursor) shrink() {
 
 func (cursor *Cursor) color(style Style) termbox.Attribute {
 	if cursor.mode == IntegerMode {
-		return style.int_cursor_hex_bg
+		return style.Int_cursor_hex_bg
 	}
 	if cursor.mode == FloatingPointMode {
-		return style.fp_cursor_hex_bg
+		return style.Fp_cursor_hex_bg
 	}
 	if cursor.mode == BitPatternMode {
-		return style.bit_cursor_hex_bg
+		return style.Bit_cursor_hex_bg
 	}
-	return style.text_cursor_hex_bg
+	return style.Text_cursor_hex_bg
 }
 
 func (cursor *Cursor) highlightRange(data []byte) ByteRange {

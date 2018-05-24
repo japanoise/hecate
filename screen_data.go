@@ -71,7 +71,7 @@ func (screen *DataScreen) handleKeyEvent(event termbox.Event, output chan<- inte
 	active_tab := screen.tabs[screen.active_tab]
 	if active_tab.field_editor != nil {
 		return active_tab.handleKeyEvent(event, output)
-	} else if event.Key == termbox.KeyCtrlLsqBracket { // color palette
+	} else if event.Key == termbox.KeyCtrlK { // color palette
 		return PALETTE_SCREEN_INDEX
 	} else if event.Ch == '?' { // about
 		return ABOUT_SCREEN_INDEX
@@ -181,8 +181,8 @@ func (screen *DataScreen) drawScreen(style Style) {
 	width, _ := termbox.Size()
 	active_tab := screen.tabs[screen.active_tab]
 	if screen.show_tabs {
-		fg := style.default_fg
-		bg := style.default_bg
+		fg := style.Default_fg
+		bg := style.Default_bg
 		x_pos := -screen.tab_view_port.offset
 		for i := 0; i < TAB_MARGIN; i++ {
 			drawStringAtPoint(THICK_LINE, x_pos, 2, fg, bg)
@@ -191,7 +191,7 @@ func (screen *DataScreen) drawScreen(style Style) {
 		for _, tab := range screen.tabs {
 			name_fg := fg
 			if tab != active_tab {
-				name_fg = style.rune_fg
+				name_fg = style.Rune_fg
 			}
 			drawStringAtPoint("╭", x_pos, 0, fg, bg)
 			drawStringAtPoint("│", x_pos, 1, fg, bg)

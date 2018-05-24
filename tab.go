@@ -410,13 +410,13 @@ func (tab *DataTab) drawTab(style Style, vertical_offset int) {
 	cursor_length := cursor.length()
 	start := view_port.first_row * view_port.bytes_per_row
 	end := start + view_port.number_of_rows*view_port.bytes_per_row
-	rune_bg := style.default_bg
+	rune_bg := style.Default_bg
 	for index := start; index < end && index < len(tab.bytes); index++ {
 		b := tab.bytes[index]
-		hex_fg := style.default_fg
-		hex_bg := style.default_bg
-		code_fg := style.space_rune_fg
-		rune_fg := style.rune_fg
+		hex_fg := style.Default_fg
+		hex_bg := style.Default_bg
+		code_fg := style.Space_rune_fg
+		rune_fg := style.Rune_fg
 		if index%view_port.bytes_per_row == 0 {
 			x = x_pad
 			y += line_height
@@ -429,15 +429,15 @@ func (tab *DataTab) drawTab(style Style, vertical_offset int) {
 			termbox.SetCell(x-1, y, ' ', hex_fg, hex_bg)
 			termbox.SetCell(x+2, y, ' ', hex_fg, hex_bg)
 		} else if index >= hilite.pos && index < hilite.pos+hilite.length {
-			hex_fg = style.hilite_hex_fg
+			hex_fg = style.Hilite_hex_fg
 		}
 		if index >= hilite.pos && index < hilite.pos+hilite.length {
-			rune_fg = style.hilite_rune_fg
-			code_fg = style.rune_fg
+			rune_fg = style.Hilite_rune_fg
+			code_fg = style.Rune_fg
 		}
 		if cursor.mode == StringMode || index < cursor.pos || index >= cursor.pos+cursor_length {
 			if b == 0x20 {
-				termbox.SetCell(x, y+1, style.space_rune, style.space_rune_fg, rune_bg)
+				termbox.SetCell(x, y+1, style.Space_rune, style.Space_rune_fg, rune_bg)
 			} else if isASCII(b) {
 				termbox.SetCell(x, y+1, rune(b), rune_fg, rune_bg)
 			} else if isCode(b) {
@@ -469,9 +469,9 @@ func (tab *DataTab) drawTab(style Style, vertical_offset int) {
 				b := tab.bytes[cursor.pos+j]
 				for i := 0; i < 8; i++ {
 					if b&(1<<uint8(7-i)) > 0 {
-						termbox.SetCell(x_copy-1+(i%4), y_copy+1+i/4, style.filled_bit_rune, style.bit_fg, rune_bg)
+						termbox.SetCell(x_copy-1+(i%4), y_copy+1+i/4, style.Filled_bit_rune, style.Bit_fg, rune_bg)
 					} else {
-						termbox.SetCell(x_copy-1+(i%4), y_copy+1+i/4, style.empty_bit_rune, style.bit_fg, rune_bg)
+						termbox.SetCell(x_copy-1+(i%4), y_copy+1+i/4, style.Empty_bit_rune, style.Bit_fg, rune_bg)
 					}
 				}
 				x_copy = start_x
@@ -485,9 +485,9 @@ func (tab *DataTab) drawTab(style Style, vertical_offset int) {
 				b := tab.bytes[cursor.pos+j]
 				for i := 0; i < 8; i++ {
 					if b&(1<<uint8(7-i)) > 0 {
-						termbox.SetCell(x_copy-1+i, y_copy+j+1, style.filled_bit_rune, style.bit_fg, rune_bg)
+						termbox.SetCell(x_copy-1+i, y_copy+j+1, style.Filled_bit_rune, style.Bit_fg, rune_bg)
 					} else {
-						termbox.SetCell(x_copy-1+i, y_copy+j+1, style.empty_bit_rune, style.bit_fg, rune_bg)
+						termbox.SetCell(x_copy-1+i, y_copy+j+1, style.Empty_bit_rune, style.Bit_fg, rune_bg)
 					}
 				}
 			}
@@ -506,7 +506,7 @@ func (tab *DataTab) drawTab(style Style, vertical_offset int) {
 			if y_copy > last_y {
 				break
 			}
-			termbox.SetCell(x_copy, y_copy, runeValue, style.int_fg, rune_bg)
+			termbox.SetCell(x_copy, y_copy, runeValue, style.Int_fg, rune_bg)
 			x_copy++
 			if x_copy > last_x {
 				x_copy = x_pad

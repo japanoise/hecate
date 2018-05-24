@@ -183,15 +183,34 @@ func main() {
 		files = append(files, *file_info)
 	}
 
+	var style *Style
+	configdir, err := GetConfigDir()
+	if err == nil {
+		fn := configdir + "color.json"
+		if _, err := os.Stat(fn); err == nil {
+			// if file exists
+			fs, err := LoadStyleFromFile(fn)
+			if err == nil {
+				style = fs
+			} else {
+				fmt.Printf(err.Error())
+				os.Exit(1)
+			}
+		} else {
+			style = defaultStyle()
+		}
+	} else {
+		style = defaultStyle()
+	}
+
 	err = termbox.Init()
 	if err != nil {
 		panic(err)
 	}
 	defer termbox.Close()
 
-	style := defaultStyle()
 	termbox.SetOutputMode(outputMode)
 	termbox.SetInputMode(inputMode)
 
-	mainLoop(files, style)
+	mainLoop(files, *style)
 }

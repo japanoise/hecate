@@ -20,8 +20,8 @@ func (widget OffsetWidget) drawAtPoint(tab *DataTab, layout Layout, point Point,
 	if layout.pressure > 3 {
 		return Size{0, 0}
 	}
-	fg := style.default_fg
-	bg := style.default_bg
+	fg := style.Default_fg
+	bg := style.Default_bg
 	cursor := tab.cursor
 	y_pos := point.y
 	x_pos := point.x
@@ -55,13 +55,13 @@ func (widget OffsetWidget) drawAtPoint(tab *DataTab, layout Layout, point Point,
 		}
 		fifty_sixths := int(7 * 8 * tab.search_progress)
 		if fifty_sixths < 2 {
-			drawStringAtPoint(fmt.Sprintf("%2.2f%% ", 100*tab.search_progress), x_pos+1, y_pos, style.space_rune_fg, bg)
+			drawStringAtPoint(fmt.Sprintf("%2.2f%% ", 100*tab.search_progress), x_pos+1, y_pos, style.Space_rune_fg, bg)
 		}
 		for i := 0; i < 7; i++ {
 			if fifty_sixths >= 8*(i+1) {
-				drawStringAtPoint(eighths[8], x_pos+i, y_pos, style.search_progress_fg, bg)
+				drawStringAtPoint(eighths[8], x_pos+i, y_pos, style.Search_progress_fg, bg)
 			} else if fifty_sixths > 8*i {
-				drawStringAtPoint(eighths[fifty_sixths-8*i], x_pos+i, y_pos, style.search_progress_fg, bg)
+				drawStringAtPoint(eighths[fifty_sixths-8*i], x_pos+i, y_pos, style.Search_progress_fg, bg)
 			}
 		}
 		x_pos += 7
@@ -75,9 +75,9 @@ func (widget OffsetWidget) drawAtPoint(tab *DataTab, layout Layout, point Point,
 		y_pos++
 		y_pos++
 		if cursor.mode == FloatingPointMode || cursor.mode == IntegerMode {
-			fg = style.default_fg
+			fg = style.Default_fg
 		} else {
-			fg = style.space_rune_fg
+			fg = style.Space_rune_fg
 		}
 		epoch_string := fmt.Sprintf(" Epoch(@) %s", cursor.epoch_time.Format("1/2/2006"))
 		drawStringAtPoint(epoch_string, point.x, y_pos, fg, bg)

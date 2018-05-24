@@ -154,14 +154,14 @@ func (field_editor *FieldEditor) delete_back() {
 
 func (field_editor *FieldEditor) drawFieldValueAtPoint(style Style, x, y int) int {
 	termbox.SetCursor(x+1+field_editor.cursor_pos, y)
-	fg, bg, value := style.field_editor_last_fg, style.field_editor_last_bg, field_editor.last_value
+	fg, bg, value := style.Field_editor_last_fg, style.Field_editor_last_bg, field_editor.last_value
 
 	if len(field_editor.value) > 0 || len(field_editor.last_value) == 0 {
-		fg, bg, value = style.field_editor_fg, style.field_editor_bg, string(field_editor.value)
+		fg, bg, value = style.Field_editor_fg, style.Field_editor_bg, string(field_editor.value)
 	}
 
 	if !field_editor.valid {
-		fg, bg = style.field_editor_invalid_fg, style.field_editor_invalid_bg
+		fg, bg = style.Field_editor_invalid_fg, style.Field_editor_invalid_bg
 	}
 
 	return drawStringAtPoint(fmt.Sprintf(" %-*s ", field_editor.width, value), x, y, fg, bg)

@@ -21,39 +21,39 @@ func handleSpecialKeys(key termbox.Key) {
 const outputMode = termbox.Output256
 const inputMode = termbox.InputAlt
 
-func defaultStyle() Style {
+func defaultStyle() *Style {
 	var style Style
-	style.default_bg = termbox.Attribute(1)
-	style.default_fg = termbox.Attribute(256)
-	style.rune_fg = termbox.Attribute(248)
-	style.int_fg = termbox.Attribute(154)
-	style.bit_fg = termbox.Attribute(154)
-	style.space_rune_fg = termbox.Attribute(240)
-	style.selected_option_bg = termbox.Attribute(240)
-	style.search_progress_fg = termbox.Attribute(76)
+	style.Default_bg = termbox.Attribute(1)
+	style.Default_fg = termbox.Attribute(256)
+	style.Rune_fg = termbox.Attribute(248)
+	style.Int_fg = termbox.Attribute(154)
+	style.Bit_fg = termbox.Attribute(154)
+	style.Space_rune_fg = termbox.Attribute(240)
+	style.Selected_option_bg = termbox.Attribute(240)
+	style.Search_progress_fg = termbox.Attribute(76)
 
-	style.text_cursor_hex_bg = termbox.Attribute(167)
-	style.bit_cursor_hex_bg = termbox.Attribute(26)
-	style.int_cursor_hex_bg = termbox.Attribute(63)
-	style.fp_cursor_hex_bg = termbox.Attribute(127)
+	style.Text_cursor_hex_bg = termbox.Attribute(167)
+	style.Bit_cursor_hex_bg = termbox.Attribute(26)
+	style.Int_cursor_hex_bg = termbox.Attribute(63)
+	style.Fp_cursor_hex_bg = termbox.Attribute(127)
 
-	style.hilite_hex_fg = termbox.Attribute(231)
-	style.hilite_rune_fg = termbox.Attribute(256)
+	style.Hilite_hex_fg = termbox.Attribute(231)
+	style.Hilite_rune_fg = termbox.Attribute(256)
 
-	style.about_logo_bg = termbox.Attribute(125)
+	style.About_logo_bg = termbox.Attribute(125)
 
-	style.field_editor_bg = style.default_fg
-	style.field_editor_fg = style.default_bg
+	style.Field_editor_bg = style.Default_fg
+	style.Field_editor_fg = style.Default_bg
 
-	style.field_editor_last_bg = style.rune_fg
-	style.field_editor_last_fg = style.default_fg
+	style.Field_editor_last_bg = style.Rune_fg
+	style.Field_editor_last_fg = style.Default_fg
 
-	style.field_editor_invalid_bg = termbox.Attribute(125)
-	style.field_editor_invalid_fg = style.rune_fg
+	style.Field_editor_invalid_bg = termbox.Attribute(125)
+	style.Field_editor_invalid_fg = style.Rune_fg
 
-	style.space_rune = '•'
-	style.filled_bit_rune = '◾'
-	style.empty_bit_rune = '◽'
+	style.Space_rune = '•'
+	style.Filled_bit_rune = '◾'
+	style.Empty_bit_rune = '◽'
 
-	return style
+	return &style
 }

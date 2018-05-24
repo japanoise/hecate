@@ -28,7 +28,7 @@ func (screen *PaletteScreen) performLayout() {
 
 func (screen *PaletteScreen) drawScreen(style Style) {
 	width, height := termbox.Size()
-	fg, bg := style.default_fg, style.default_bg
+	fg, bg := style.Default_fg, style.Default_bg
 	x, y := 2, 1
 	for color := 1; color <= 256; color++ {
 		if x+8 > width {

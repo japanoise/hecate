@@ -38,8 +38,8 @@ func (widget CursorWidget) sizeForLayout(layout Layout) Size {
 }
 
 func (widget CursorWidget) drawAtPoint(tab *DataTab, layout Layout, point Point, style Style) Size {
-	fg := style.default_fg
-	bg := style.default_bg
+	fg := style.Default_fg
+	bg := style.Default_bg
 	cursor := tab.cursor
 	x_pos := point.x
 	y_pos := point.y
@@ -99,7 +99,7 @@ func (widget CursorWidget) drawAtPoint(tab *DataTab, layout Layout, point Point,
 		if cursor.mode == IntegerMode || cursor.mode == FloatingPointMode {
 			x_pos += drawStringAtPoint("Toggle: ", x_pos, y_pos, fg, bg)
 		} else {
-			x_pos += drawStringAtPoint("Toggle: ", x_pos, y_pos, style.space_rune_fg, bg)
+			x_pos += drawStringAtPoint("Toggle: ", x_pos, y_pos, style.Space_rune_fg, bg)
 		}
 	}
 	if pressure >= 8 {
@@ -113,7 +113,7 @@ func (widget CursorWidget) drawAtPoint(tab *DataTab, layout Layout, point Point,
 		}
 		x_pos++
 	} else if cursor.mode == BitPatternMode || cursor.mode == StringMode {
-		x_pos += drawStringAtPoint("(e)ndian", x_pos, y_pos, style.space_rune_fg, bg)
+		x_pos += drawStringAtPoint("(e)ndian", x_pos, y_pos, style.Space_rune_fg, bg)
 		x_pos++
 	}
 	if pressure >= 8 {
@@ -129,7 +129,7 @@ func (widget CursorWidget) drawAtPoint(tab *DataTab, layout Layout, point Point,
 			x_pos += drawStringAtPoint("(u)nsigned", x_pos, y_pos, fg, bg)
 		}
 	} else {
-		x_pos += drawStringAtPoint("(u)nsigned", x_pos, y_pos, style.space_rune_fg, bg)
+		x_pos += drawStringAtPoint("(u)nsigned", x_pos, y_pos, style.Space_rune_fg, bg)
 	}
 	if pressure < 6 {
 		x_pos += 4
@@ -138,15 +138,15 @@ func (widget CursorWidget) drawAtPoint(tab *DataTab, layout Layout, point Point,
 			if cursor.length() > cursor.minimumLength() {
 				x_pos += drawStringAtPoint(" ←H", x_pos, y_pos, fg, bg)
 			} else {
-				x_pos += drawStringAtPoint(" ←H", x_pos, y_pos, style.space_rune_fg, bg)
+				x_pos += drawStringAtPoint(" ←H", x_pos, y_pos, style.Space_rune_fg, bg)
 			}
 			if cursor.length() < cursor.maximumLength() {
 				x_pos += drawStringAtPoint(" →L", x_pos, y_pos, fg, bg)
 			} else {
-				x_pos += drawStringAtPoint(" →L", x_pos, y_pos, style.space_rune_fg, bg)
+				x_pos += drawStringAtPoint(" →L", x_pos, y_pos, style.Space_rune_fg, bg)
 			}
 		} else {
-			x_pos += drawStringAtPoint("Size: ←H →L", x_pos, y_pos, style.space_rune_fg, bg)
+			x_pos += drawStringAtPoint("Size: ←H →L", x_pos, y_pos, style.Space_rune_fg, bg)
 		}
 	}
 	max_x_pos = x_pos
@@ -156,7 +156,7 @@ func (widget CursorWidget) drawAtPoint(tab *DataTab, layout Layout, point Point,
 		if pressure < 6 {
 			y_pos++
 		}
-		date_fg := style.space_rune_fg
+		date_fg := style.Space_rune_fg
 		if cursor.mode == IntegerMode || cursor.mode == FloatingPointMode {
 			date_fg = fg
 		}
@@ -170,13 +170,13 @@ func (widget CursorWidget) drawAtPoint(tab *DataTab, layout Layout, point Point,
 		if pressure < 6 {
 			x_pos += 2
 			if date_fg == fg && cursor.epoch_unit == SecondsSinceEpoch {
-				x_pos += drawStringAtPoint("(s)ecs", x_pos, y_pos, date_fg, style.selected_option_bg)
+				x_pos += drawStringAtPoint("(s)ecs", x_pos, y_pos, date_fg, style.Selected_option_bg)
 			} else {
 				x_pos += drawStringAtPoint("(s)ecs", x_pos, y_pos, date_fg, bg)
 			}
 			x_pos++
 			if date_fg == fg && cursor.epoch_unit == DaysSinceEpoch {
-				x_pos += drawStringAtPoint("(d)ays", x_pos, y_pos, date_fg, style.selected_option_bg)
+				x_pos += drawStringAtPoint("(d)ays", x_pos, y_pos, date_fg, style.Selected_option_bg)
 			} else {
 				x_pos += drawStringAtPoint("(d)ays", x_pos, y_pos, date_fg, bg)
 			}

@@ -36,7 +36,7 @@ func drawBackground(bg termbox.Attribute) {
 
 func layoutAndDrawScreen(screen Screen, style Style) {
 	screen.performLayout()
-	drawBackground(style.default_bg)
+	drawBackground(style.Default_bg)
 	screen.drawScreen(style)
 	termbox.Flush()
 }

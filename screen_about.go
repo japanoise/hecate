@@ -25,8 +25,8 @@ func drawCommandsAtPoint(commands []Command, x int, y int, style Style) {
 		}
 	}
 	for index, cmd := range commands {
-		drawStringAtPoint(fmt.Sprintf("%[2]*[1]s", cmd.key, longest_key_len), x_pos, y_pos, style.default_fg, style.default_bg)
-		drawStringAtPoint(cmd.description, x_pos+longest_key_len+2, y_pos, style.default_fg, style.default_bg)
+		drawStringAtPoint(fmt.Sprintf("%[2]*[1]s", cmd.key, longest_key_len), x_pos, y_pos, style.Default_fg, style.Default_bg)
+		drawStringAtPoint(cmd.description, x_pos+longest_key_len+2, y_pos, style.Default_fg, style.Default_bg)
 		y_pos++
 		if index > 2 && index%2 == 1 {
 			y_pos++
@@ -59,8 +59,8 @@ func (screen *AboutScreen) performLayout() {
 }
 
 func (screen *AboutScreen) drawScreen(style Style) {
-	default_fg := style.default_fg
-	default_bg := style.default_bg
+	default_fg := style.Default_fg
+	default_bg := style.Default_bg
 	width, height := termbox.Size()
 	template := [...]string{
 		"                              ############################",
@@ -149,7 +149,7 @@ func (screen *AboutScreen) drawScreen(style Style) {
 			bg := default_bg
 			displayRune := ' '
 			if runeValue != ' ' {
-				bg = style.about_logo_bg
+				bg = style.About_logo_bg
 				if runeValue != '#' {
 					displayRune = runeValue
 				}
@@ -163,23 +163,23 @@ func (screen *AboutScreen) drawScreen(style Style) {
 	y_pos++
 
 	if screen.show_html {
-		drawStringAtPoint("<table>", 0, y_pos, style.default_fg, style.default_bg)
+		drawStringAtPoint("<table>", 0, y_pos, style.Default_fg, style.Default_bg)
 		y_pos++
 		for i := 0; i < len(commands1); i++ {
 			x_pos = 0
-			x_pos += drawStringAtPoint("<tr>", x_pos, y_pos, style.default_fg, style.default_bg)
+			x_pos += drawStringAtPoint("<tr>", x_pos, y_pos, style.Default_fg, style.Default_bg)
 			for _, cmd := range [...]Command{commands1[i], commands2[i], commands3[i]} {
-				x_pos += drawStringAtPoint(fmt.Sprintf("<td>%s</td>", cmd.key), x_pos, y_pos, style.default_fg, style.default_bg)
+				x_pos += drawStringAtPoint(fmt.Sprintf("<td>%s</td>", cmd.key), x_pos, y_pos, style.Default_fg, style.Default_bg)
 				if cmd.description == "this screen" {
-					x_pos += drawStringAtPoint(fmt.Sprintf("<td>%s</td>", "help screen"), x_pos, y_pos, style.default_fg, style.default_bg)
+					x_pos += drawStringAtPoint(fmt.Sprintf("<td>%s</td>", "help screen"), x_pos, y_pos, style.Default_fg, style.Default_bg)
 				} else {
-					x_pos += drawStringAtPoint(fmt.Sprintf("<td>%s</td>", cmd.description), x_pos, y_pos, style.default_fg, style.default_bg)
+					x_pos += drawStringAtPoint(fmt.Sprintf("<td>%s</td>", cmd.description), x_pos, y_pos, style.Default_fg, style.Default_bg)
 				}
 			}
-			x_pos += drawStringAtPoint("</tr>", x_pos, y_pos, style.default_fg, style.default_bg)
+			x_pos += drawStringAtPoint("</tr>", x_pos, y_pos, style.Default_fg, style.Default_bg)
 			y_pos++
 		}
-		drawStringAtPoint("</table>", 0, y_pos, style.default_fg, style.default_bg)
+		drawStringAtPoint("</table>", 0, y_pos, style.Default_fg, style.Default_bg)
 		y_pos++
 	} else {
 		drawCommandsAtPoint(commands1[:], x_pos, y_pos+1, style)
