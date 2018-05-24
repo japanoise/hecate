@@ -3,10 +3,10 @@ package main
 type NavigationWidget int
 
 const (
-	navStrLong      string = "Navigate: ←h ↓j ↑k →l"
-	navStrShort            = "Navigate: ←h ↓j"
-	navStrShortMore        = "↑k →l"
-	navStrWords            = "←←←←b w→→→→"
+	navStrLong      string = "Navigate: ←C-b ↓C-n ↑C-p →C-f"
+	navStrShort            = "Navigate: ←C-b ↓C-n"
+	navStrShortMore        = "↑C-p →C-f"
+	navStrWords            = "←←←←M-b M-f→→→→"
 )
 
 func (widget NavigationWidget) sizeForLayout(layout Layout) Size {

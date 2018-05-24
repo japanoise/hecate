@@ -80,21 +80,21 @@ func (screen *AboutScreen) drawScreen(style Style) {
 		"#### #### ########  #####   #### #### #### ########       ",
 	}
 	commands1 := [...]Command{
-		{"h", "left"},
-		{"j", "down"},
-		{"k", "up"},
-		{"l", "right"},
+		{"C-b", "left"},
+		{"C-n", "down"},
+		{"C-p", "up"},
+		{"C-f", "right"},
 
-		{"b", "left 4 bytes"},
-		{"w", "right 4 bytes"},
+		{"M-b", "left 4 bytes"},
+		{"M-f", "right 4 bytes"},
 
-		{"^", "line start"},
-		{"$", "line end"},
+		{"C-a", "line start"},
+		{"C-e", "line end"},
 
-		{"g", "file start"},
-		{"G", "file end"},
+		{"M-<", "file start"},
+		{"M->", "file end"},
 
-		{":", "jump to byte"},
+		{"M-g", "jump to byte"},
 		{"x", "toggle hex"},
 	}
 
@@ -113,7 +113,7 @@ func (screen *AboutScreen) drawScreen(style Style) {
 		{"a", "date decoding"},
 		{"@", "set date epoch"},
 
-		{"/", "search file"},
+		{"C-s", "search file"},
 		{"n", "next match"},
 	}
 
@@ -127,11 +127,11 @@ func (screen *AboutScreen) drawScreen(style Style) {
 		{"ctrl-t", "new tab"},
 		{"ctrl-w", "close tab"},
 
-		{"ctrl-e", "scroll down"},
+		{"(none)", "scroll down"},
 		{"ctrl-y", "scroll up"},
 
-		{"ctrl-f", "page down"},
-		{"ctrl-b", "page up"},
+		{"C-v", "page down"},
+		{"M-v", "page up"},
 
 		{"enter", "edit mode"},
 		{"?", "this screen"},

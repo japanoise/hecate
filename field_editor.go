@@ -24,7 +24,7 @@ type FieldEditor struct {
 func (field_editor *FieldEditor) handleKeyEvent(event termbox.Event) (result int) {
 	result = 0
 
-	if len(field_editor.value) == 0 && event.Key != termbox.KeyEsc {
+	if len(field_editor.value) == 0 && event.Key != termbox.KeyCtrlG {
 		if event.Ch == 0 {
 			field_editor.setValue([]rune(field_editor.last_value))
 		} else if len(field_editor.init_value) > 0 {
@@ -43,17 +43,17 @@ func (field_editor *FieldEditor) handleKeyEvent(event termbox.Event) (result int
 		if field_editor.valid {
 			result = 1
 		}
-	} else if event.Key == termbox.KeyEsc {
+	} else if event.Key == termbox.KeyCtrlG {
 		if len(field_editor.value) == 0 {
 			result = -1
 		}
 		field_editor.setValue(nil)
-	} else if event.Key == termbox.KeyArrowLeft {
+	} else if event.Key == termbox.KeyArrowLeft || event.Key == termbox.KeyCtrlB {
 		field_editor.moveCursor(-1)
 	} else if event.Key == termbox.KeyArrowUp || event.Key == termbox.KeyCtrlA {
 		field_editor.at_bol = event.Key == termbox.KeyArrowUp
 		field_editor.setCursorPos(0)
-	} else if event.Key == termbox.KeyArrowRight {
+	} else if event.Key == termbox.KeyArrowRight || event.Key == termbox.KeyCtrlF {
 		field_editor.moveCursor(1)
 	} else if event.Key == termbox.KeyArrowDown || event.Key == termbox.KeyCtrlE {
 		field_editor.at_eol = event.Key == termbox.KeyArrowDown
@@ -62,7 +62,7 @@ func (field_editor *FieldEditor) handleKeyEvent(event termbox.Event) (result int
 		field_editor.delete_back()
 	} else if event.Key == termbox.KeyCtrlD || event.Key == termbox.KeyDelete {
 		field_editor.delete_front()
-	} else if event.Key == termbox.KeyCtrlK {
+	} else if event.Key == termbox.KeyCtrlK || event.Key == termbox.KeyCtrlU {
 		field_editor.setValue(make([]rune, 0))
 	} else if unicode.IsPrint(event.Ch) {
 		field_editor.insert(event.Ch)

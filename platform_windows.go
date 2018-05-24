@@ -9,6 +9,7 @@ import (
 func handleSpecialKeys(key termbox.Key) {}
 
 const outputMode = termbox.OutputNormal
+const inputMode = termbox.InputAlt
 
 func defaultStyle() Style {
 	var style Style

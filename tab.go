@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/nsf/termbox-go"
 	"strings"
 	"time"
+
+	"github.com/nsf/termbox-go"
 )
 
 var modes = map[rune]CursorMode{
@@ -159,13 +160,13 @@ func (tab *DataTab) handleKeyEvent(event termbox.Event, output chan<- interface{
 			}()
 			tab.is_searching = true
 		}
-	} else if event.Ch == ':' {
+	} else if metaCh(&event, 'g') {
 		if tab.is_searching {
 			tab.search_quit_channel <- true
 		}
 		tab.field_editor = &FieldEditor{width: 10, valid: true}
 		tab.edit_mode = EditingOffset
-	} else if event.Ch == '/' {
+	} else if event.Key == termbox.KeyCtrlS {
 		if tab.is_searching {
 			tab.search_quit_channel <- true
 		}
@@ -192,29 +193,29 @@ func (tab *DataTab) handleKeyEvent(event termbox.Event, output chan<- interface{
 		if tab.show_date {
 			tab.cursor.epoch_unit = DaysSinceEpoch
 		}
-	} else if event.Ch == 'j' || event.Key == termbox.KeyArrowDown { // down
+	} else if event.Key == termbox.KeyCtrlN || event.Key == termbox.KeyArrowDown { // down
 		tab.cursor.move(tab.view_port.bytes_per_row)
-	} else if event.Key == termbox.KeyCtrlF || event.Key == termbox.KeyPgdn { // page down
+	} else if event.Key == termbox.KeyCtrlV || event.Key == termbox.KeyPgdn { // page down
 		tab.cursor.move(tab.view_port.bytes_per_row * tab.view_port.number_of_rows)
-	} else if event.Ch == 'k' || event.Key == termbox.KeyArrowUp { // up
+	} else if event.Key == termbox.KeyCtrlP || event.Key == termbox.KeyArrowUp { // up
 		tab.cursor.move(-tab.view_port.bytes_per_row)
-	} else if event.Key == termbox.KeyCtrlB || event.Key == termbox.KeyPgup { // page up
+	} else if metaCh(&event, 'v') || event.Key == termbox.KeyPgup { // page up
 		tab.cursor.move(-tab.view_port.bytes_per_row * tab.view_port.number_of_rows)
-	} else if event.Ch == 'h' || event.Key == termbox.KeyArrowLeft { // left
+	} else if event.Key == termbox.KeyCtrlB || event.Key == termbox.KeyArrowLeft { // left
 		tab.cursor.move(-1)
-	} else if event.Ch == 'l' || event.Key == termbox.KeyArrowRight { // right
+	} else if event.Key == termbox.KeyCtrlF || event.Key == termbox.KeyArrowRight { // right
 		tab.cursor.move(1)
-	} else if event.Ch == 'w' { /* forward 1 "word" */
+	} else if metaCh(&event, 'f') { /* forward 1 "word" */
 		tab.cursor.move(4)
-	} else if event.Ch == 'b' { /* back 1 "word" */
+	} else if metaCh(&event, 'b') { /* back 1 "word" */
 		tab.cursor.move(-4)
-	} else if event.Ch == 'g' {
+	} else if metaCh(&event, '<') { // start-of-file
 		tab.cursor.setPos(0)
-	} else if event.Ch == 'G' {
+	} else if metaCh(&event, '>') { // eof
 		tab.cursor.setPos(len(tab.bytes))
-	} else if event.Ch == '^' {
+	} else if event.Key == termbox.KeyCtrlA { // Start of line
 		tab.cursor.setPos(tab.cursor.pos / tab.view_port.bytes_per_row * tab.view_port.bytes_per_row)
-	} else if event.Ch == '$' {
+	} else if event.Key == termbox.KeyCtrlE { // End of line
 		tab.cursor.setPos((tab.cursor.pos/tab.view_port.bytes_per_row+1)*tab.view_port.bytes_per_row - tab.cursor.length())
 	} else if modes[event.Ch] != 0 {
 		if tab.cursor.mode == modes[event.Ch] {
@@ -257,6 +258,10 @@ func (tab *DataTab) handleKeyEvent(event termbox.Event, output chan<- interface{
 	}
 
 	return DATA_SCREEN_INDEX
+}
+
+func metaCh(event *termbox.Event, ch rune) bool {
+	return event.Mod == termbox.ModAlt && event.Ch == ch
 }
 
 func (tab *DataTab) handleFieldEditor(event termbox.Event) {

@@ -191,6 +191,7 @@ func main() {
 
 	style := defaultStyle()
 	termbox.SetOutputMode(outputMode)
+	termbox.SetInputMode(inputMode)
 
 	mainLoop(files, style)
 }
