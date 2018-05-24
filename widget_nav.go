@@ -3,9 +3,9 @@ package main
 type NavigationWidget int
 
 const (
-	navStrLong      string = "Navigate: ←C-b ↓C-n ↑C-p →C-f"
-	navStrShort            = "Navigate: ←C-b ↓C-n"
-	navStrShortMore        = "↑C-p →C-f"
+	navStrLong      string = "Navigate: ←^B ↓^N ↑^P →^F"
+	navStrShort            = "Navigate: ←^B ↓^N"
+	navStrShortMore        = "↑^P →^F"
 	navStrWords            = "←←←←M-b M-f→→→→"
 )
 
