@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"math"
+	"strconv"
+	"strings"
 	"time"
 )
 
@@ -17,23 +19,27 @@ func scanEpoch(value string, epoch time.Time) time.Time {
 func scanOffset(value string, file_pos int) int {
 	var err error
 	expression := ""
-	scanned_file_pos := 0
+	var scanned_file_pos int64 = 0
 	if n, _ := fmt.Sscanf(value, "+%s", &expression); n > 0 {
 		if scanned_file_pos, err = evaluateExpression(expression); err == nil {
-			return file_pos + scanned_file_pos
+			return file_pos + int(scanned_file_pos)
 		}
 		return -1
 	}
 	if scanned_file_pos, err = evaluateExpression(value); err == nil {
 		if scanned_file_pos < 0 {
-			if scanned_file_pos+file_pos < 0 {
+			if int(scanned_file_pos)+file_pos < 0 {
 				return 0
 			}
-			return scanned_file_pos + file_pos
+			return int(scanned_file_pos) + file_pos
 		}
-		return scanned_file_pos
+		return int(scanned_file_pos)
 	}
 	return -1
+}
+
+func evaluateExpression(line string) (int64, error) {
+	return strconv.ParseInt(strings.TrimSpace(line), 0, 64)
 }
 
 func scanSearchString(value string, bytes []byte, cursor Cursor, quit <-chan bool, progress chan<- int) *Cursor {
