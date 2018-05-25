@@ -1,8 +1,5 @@
 # hecate: The Hex Editor From Hell!
 
-This fork of the original project uses Emacs keys instead of vi keys - because
-you should only need to learn one set of editor bindings ;)
-
 > HECATE. O well done! I commend your pains;  
 >    And every one shall share i' the gains;  
 >    And now about the cauldron sing,  
@@ -11,7 +8,7 @@ you should only need to learn one set of editor bindings ;)
 > 
 > --*Macbeth*, p. 56
 
-Download latest release: **[Linux, Mac OS X, and Windows](https://github.com/japanoise/hecate/releases)**
+Download latest release: **[Linux, Mac OS X, and Windows][release]**
 
 Compile from source:
 
@@ -25,6 +22,9 @@ Hecate is a **terminal hex editor** unlike any you've ever seen: instead of putt
 the (ASCII) representation of bytes way out on the right side of the screen, it
 puts the interpreted values directly *beneath* the hex representation.
 
+This fork of the original project uses Emacs keys instead of vi keys - because
+you should only need to learn one set of editor bindings ;)
+
 Behold:
 ![Hecate screenshot](http://www.evanmiller.org/images/hecate/screenshot2.png)
 
@@ -32,7 +32,7 @@ If that weren't exciting enough, you can move the cursor around using Emacs-like
 controls and interpret the underlying bytes as an integer, float, etc. --
 perfect for your reverse-engineering needs.
 
-But wait, there's more! Hecate (pronounced HECK-it, named after the Greek [goddess](https://en.wikipedia.org/wiki/Hecate)
+But wait, there's more! Hecate (pronounced HECK-it, named after the Greek [goddess][1]
 of witchcraft) features tabbed browsing, in-place editing, large-file support,
 full-file searching, and arbitrary expressions for specifying an offset within
 a file. Place the cursor over some bytes and choose a mode (**t** for text, **p**
@@ -62,11 +62,11 @@ Full list of commands:
 <tr><td>M-f</td><td>right 4 bytes</td><td>L</td><td>grow cursor</td><td>ctrl-w</td><td>close tab</td></tr>
 <tr><td>C-a</td><td>line start</td><td>e</td><td>toggle endianness</td><td>(none)</td><td>scroll down</td></tr>
 <tr><td>C-e</td><td>line end</td><td>u</td><td>toggle signedness</td><td>ctrl-y</td><td>scroll up</td></tr>
-<tr><td>M-\<</td><td>file start</td><td>a</td><td>date decoding</td><td>C-v</td><td>page down</td></tr>
-<tr><td>M-\></td><td>file end</td><td>@</td><td>set date epoch</td><td>M-v</td><td>page up</td></tr>
-<tr><td>M-g</td><td>jump to byte</td><td>C-s</td><td>search file</td><td>enter</td><td>edit mode</td></tr>
-<tr><td>x</td><td>toggle hex</td><td>n</td><td>next match</td><td>?</td><td>help screen</td></tr>
-<tr><td></td><td></td><td></td><td></td><td>C-l</td><td>center view</td></tr>
+<tr><td>M-&lt;</td><td>file start</td><td>a</td><td>date decoding</td><td>C-v</td><td>page down</td></tr>
+<tr><td>M-&gt;</td><td>file end</td><td>&#64;</td><td>set date epoch</td><td>M-v</td><td>page up</td></tr>
+<tr><td>M-g</td><td>jump to byte</td><td>C-s</td><td>search file</td><td>C-l</td><td>center view</td></tr>
+<tr><td>x</td><td>toggle hex</td><td>n</td><td>next match</td><td>enter</td><td>edit mode</td></tr>
+<tr><td></td><td></td><td></td><td></td><td>?</td><td>help screen</td></tr>
 </table>
 
 What are you waiting for? Don't you want to edit any file on your computer? What could possibly go wrong?
@@ -76,4 +76,7 @@ What are you waiting for? Don't you want to edit any file on your computer? What
 > I am for th' air. This night I'll spend  
 > Unto a dismal and a fatal end.
 
-Download latest release: **[Linux, Mac OS X, and Windows](https://github.com/evanmiller/hecate/releases)**
+Download latest release: **[Linux, Mac OS X, and Windows][release]**
+
+[1]: https://en.wikipedia.org/wiki/Hecate
+[release]: https://github.com/japanoise/hecate/releases
