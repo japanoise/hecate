@@ -52,8 +52,8 @@ func defaultStyle() *Style {
 	style.Field_editor_invalid_fg = style.Rune_fg
 
 	style.Space_rune = '•'
-	style.Filled_bit_rune = '●'
-	style.Empty_bit_rune = '○'
+	style.Filled_bit_rune = '1'
+	style.Empty_bit_rune = '0'
 
 	return &style
 }
