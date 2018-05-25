@@ -60,8 +60,8 @@ Full list of commands:
 <tr><td>C-f</td><td>right</td><td>f</td><td>float mode</td><td>D</td><td>next tab</td></tr>
 <tr><td>M-b</td><td>left 4 bytes</td><td>H</td><td>shrink cursor</td><td>ctrl-t</td><td>new tab</td></tr>
 <tr><td>M-f</td><td>right 4 bytes</td><td>L</td><td>grow cursor</td><td>ctrl-w</td><td>close tab</td></tr>
-<tr><td>C-a</td><td>line start</td><td>e</td><td>toggle endianness</td><td>(none)</td><td>scroll down</td></tr>
-<tr><td>C-e</td><td>line end</td><td>u</td><td>toggle signedness</td><td>ctrl-y</td><td>scroll up</td></tr>
+<tr><td>C-a</td><td>line start</td><td>e</td><td>toggle endianness</td><td>M-+</td><td>scroll down</td></tr>
+<tr><td>C-e</td><td>line end</td><td>u</td><td>toggle signedness</td><td>M--</td><td>scroll up</td></tr>
 <tr><td>M-&lt;</td><td>file start</td><td>a</td><td>date decoding</td><td>C-v</td><td>page down</td></tr>
 <tr><td>M-&gt;</td><td>file end</td><td>&#64;</td><td>set date epoch</td><td>M-v</td><td>page up</td></tr>
 <tr><td>M-g</td><td>jump to byte</td><td>C-s</td><td>search file</td><td>C-l</td><td>center view</td></tr>

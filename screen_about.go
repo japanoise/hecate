@@ -127,8 +127,8 @@ func (screen *AboutScreen) drawScreen(style Style) {
 		{"ctrl-t", "new tab"},
 		{"ctrl-w", "close tab"},
 
-		{"(none)", "scroll down"},
-		{"ctrl-y", "scroll up"},
+		{"M-+", "scroll down"},
+		{"M--", "scroll up"},
 
 		{"C-v", "page down"},
 		{"M-v", "page up"},

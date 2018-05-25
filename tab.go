@@ -242,14 +242,14 @@ func (tab *DataTab) handleKeyEvent(event termbox.Event, output chan<- interface{
 		if tab.view_port.first_row < 0 {
 			tab.view_port.first_row = 0
 		}
-	} else if event.Key == termbox.KeyCtrlE { // scroll down
+	} else if metaCh(&event, '+') { // scroll down
 		if (tab.view_port.first_row+1)*tab.view_port.bytes_per_row < len(tab.bytes) {
 			tab.view_port.first_row++
 			if tab.cursor.pos < tab.view_port.first_row*tab.view_port.bytes_per_row {
 				tab.cursor.move(tab.view_port.bytes_per_row)
 			}
 		}
-	} else if event.Key == termbox.KeyCtrlY { /* scroll up */
+	} else if metaCh(&event, '-') { /* scroll up */
 		tab.view_port.first_row--
 		if tab.cursor.pos > (tab.view_port.first_row+tab.view_port.number_of_rows)*tab.view_port.bytes_per_row {
 			tab.cursor.move(-tab.view_port.bytes_per_row)
