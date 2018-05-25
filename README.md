@@ -66,6 +66,7 @@ Full list of commands:
 <tr><td>M-\></td><td>file end</td><td>@</td><td>set date epoch</td><td>M-v</td><td>page up</td></tr>
 <tr><td>M-g</td><td>jump to byte</td><td>C-s</td><td>search file</td><td>enter</td><td>edit mode</td></tr>
 <tr><td>x</td><td>toggle hex</td><td>n</td><td>next match</td><td>?</td><td>help screen</td></tr>
+<tr><td></td><td></td><td></td><td></td><td>C-l</td><td>center view</td></tr>
 </table>
 
 What are you waiting for? Don't you want to edit any file on your computer? What could possibly go wrong?

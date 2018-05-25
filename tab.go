@@ -237,6 +237,11 @@ func (tab *DataTab) handleKeyEvent(event termbox.Event, output chan<- interface{
 		tab.cursor.shrink()
 	} else if event.Ch == 'L' {
 		tab.cursor.grow()
+	} else if event.Key == termbox.KeyCtrlL { // Center view
+		tab.view_port.first_row = (tab.cursor.pos / tab.view_port.bytes_per_row) - (tab.view_port.number_of_rows / 2)
+		if tab.view_port.first_row < 0 {
+			tab.view_port.first_row = 0
+		}
 	} else if event.Key == termbox.KeyCtrlE { // scroll down
 		if (tab.view_port.first_row+1)*tab.view_port.bytes_per_row < len(tab.bytes) {
 			tab.view_port.first_row++
